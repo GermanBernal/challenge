@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    platform: linux/amd64
+    restart: always
+    container_name: myhotel-challenge
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./database/tmp:/var/lib/mysql:rw
+      - ./database/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+volumes:
+  database:
+    driver: local
