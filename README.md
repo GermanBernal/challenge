@@ -8,8 +8,6 @@ Una empresa de arriendo de vehículos necesita una aplicación para administrar 
 ```
 .
 |-- docker
-|   `-- database
-|       `-- tmp
 `-- src
     |-- main
     |   |-- java
@@ -17,12 +15,13 @@ Una empresa de arriendo de vehículos necesita una aplicación para administrar 
     |   |       `-- myhotel
     |   |           `-- challenge
     |   |               |-- configuration
-    |   |               |-- controllers
     |   |               |-- domain
     |   |               |   |-- model
+    |   |               |   |   `-- consultas
     |   |               |   |-- repository
     |   |               |   `-- usecase
     |   |               |       |-- dto
+    |   |               |       |   `-- consultas
     |   |               |       |-- impl
     |   |               |       `-- mapper
     |   |               |-- exceptions
@@ -40,86 +39,6 @@ Una empresa de arriendo de vehículos necesita una aplicación para administrar 
                         |-- infraestructure
                         |   `-- rest
                         `-- utils
-
-```
-
-## Estructura con archivos:
-```
-.
-|-- HELP.md
-|-- README.md
-|-- docker
-|   |-- database
-|   |   |-- initdb.sql
-|   |   `-- tmp
-|   `-- docker-compose.yaml
-|-- mvnw
-|-- mvnw.cmd
-|-- pom.xml
-`-- src
-    |-- main
-    |   |-- java
-    |   |   `-- com
-    |   |       `-- myhotel
-    |   |           `-- challenge
-    |   |               |-- ChallengeApplication.java
-    |   |               |-- configuration
-    |   |               |   `-- OpenApiConfig.java
-    |   |               |-- controllers
-    |   |               |-- domain
-    |   |               |   |-- model
-    |   |               |   |   |-- Auto.java
-    |   |               |   |   |-- Camion.java
-    |   |               |   |   |-- Mantenimiento.java
-    |   |               |   |   `-- Vehiculo.java
-    |   |               |   |-- repository
-    |   |               |   |   |-- AutoRepository.java
-    |   |               |   |   |-- CamionRepository.java
-    |   |               |   |   |-- MantenimientoRepository.java
-    |   |               |   |   `-- VehiculoRepository.java
-    |   |               |   `-- usecase
-    |   |               |       |-- MantenimientoService.java
-    |   |               |       |-- VehiculoService.java
-    |   |               |       |-- dto
-    |   |               |       |   |-- AutoDto.java
-    |   |               |       |   |-- CamionDto.java
-    |   |               |       |   |-- MantenimientoDto.java
-    |   |               |       |   |-- MantenimientoFullResponseDto.java
-    |   |               |       |   `-- VehiculoDto.java
-    |   |               |       |-- impl
-    |   |               |       |   |-- AutomovilServiceImpl.java
-    |   |               |       |   |-- CamionServiceImpl.java
-    |   |               |       |   `-- MantenimientoServiceImpl.java
-    |   |               |       `-- mapper
-    |   |               |           `-- VehiculosMapper.java
-    |   |               |-- exceptions
-    |   |               |   |-- MyHotelHttpException.java
-    |   |               |   `-- ResourceNotFoundException.java
-    |   |               |-- infraestructure
-    |   |               |   |-- interceptors
-    |   |               |   |   `-- ExceptionAdvice.java
-    |   |               |   `-- rest
-    |   |               |       |-- MantenimientoController.java
-    |   |               |       |-- VehiculoAutomovilController.java
-    |   |               |       `-- VehiculoCamionController.java
-    |   |               `-- utils
-    |   |                   |-- ErrorDetails.java
-    |   |                   |-- ResponseEntityBuilder.java
-    |   |                   `-- enums
-    |   |                       `-- Location.java
-    |   `-- resources
-    |       `-- application.properties
-    `-- test
-        `-- java
-            `-- com
-                `-- myhotel
-                    `-- challenge
-                        |-- ChallengeApplicationTests.java
-                        |-- infraestructure
-                        |   `-- rest
-                        |       `-- VehiculoCamionControllerTest.java
-                        `-- utils
-                            `-- TestUtils.java
 
 ```
 ## Stack Tecnológico
@@ -139,14 +58,14 @@ Una empresa de arriendo de vehículos necesita una aplicación para administrar 
 
 
 ### Docker
-Verificar que esta instalado docker:
+Verificar que está instalado docker:
 ```
 docker --version
 ```
 ```
 Docker version 20.10.14, build a224086
 ```
-Verificar que esta instalado docker-compose:
+Verificar que está instalado docker-compose:
 ```
 docker-compose --version
 ```
@@ -177,10 +96,10 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS    
 5288e7cc13d3   web:latest   "./mvnw spring-boot:…"   21 minutes ago   Up About a minute   0.0.0.0:8080->8080/tcp              myhotel-challenge-app
 212b9f62b88e   mysql:8.0    "docker-entrypoint.s…"   25 minutes ago   Up About a minute   0.0.0.0:3306->3306/tcp, 33060/tcp   myhotel-challenge-database
 ```
-Si todos los pasos fueron correctos, la aplicacion se encontrará ejecutando en el contenedor, exponiendo el puerto 8080. 
+Si todos los pasos fueron correctos, la aplicación se encontrará ejecutando en el contenedor, exponiendo el puerto 8080. 
 Podemos ingresar a swagger accediendo al siguiente link [MyHotel-challenge API](http://localhost:8080/documentation.html)
 
-> *Aclaracion:* La primera vez que se ejecute, debe cargar y ejecutar el archivo initdb.sql por lo tanto dicha demora retrasa el levantamiento del proyecto de spring, y por lo tanto, al intentar acceder al link anterior puede fallar. Se debe esperar unos segundos a que reintente levantar el proyecto de spring.
+> *Aclaracion:* La primera vez que se ejecute, debe cargar y ejecutar el archivo initdb.sql por lo tanto dicha demora retrasa el tiempo de arranque del proyecto de spring, y por lo tanto, al intentar acceder al link anterior puede fallar. Se debe esperar unos segundos a que reintente levantar el proyecto de spring.
 
 ## Swagger
 Veremos tres segmentos, correspondientes a cada uno de los controllers desarrollados:
@@ -194,10 +113,10 @@ Ademas, veremos en la pestaña Schemas, los DTOs, cada uno documentado con sus t
 * AutoDto
 * MantenimientoDto
 
-Se puede probar la API desde la misma UI de swagger, pero tambien es posible obtener la coleccion de postman, haciendo click en el link "/documentation" que se encuentra debajo del titulo "Myhotel API"
+Se puede probar la API desde la misma UI de swagger, pero tambien es posible obtener la colección de postman, haciendo click en el link "/documentation" que se encuentra debajo del titulo "Myhotel API"
 
 ## Aclaracion sobre Tests
-Se crea solamente un test de la capa rest de la clase VehiculoCamionController, la misma es a modo de demostracion.
+Se crea solamente un test de la capa rest de la clase VehiculoCamionController, la misma es a modo de demostración.
 No obstante, el Dockerfile ejecuta el comando que contiene -DskipTest.
 ```
 RUN ./mvnw clean install -DskipTests
