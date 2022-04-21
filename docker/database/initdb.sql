@@ -3,7 +3,6 @@ USE myhotel-test;
 -- Table structure for table `countries`
 --
 DROP TABLE IF EXISTS `countries`;
-
 CREATE TABLE `countries` (
   `COUNTRY_ID` varchar(2) NOT NULL,
   `COUNTRY_NAME` varchar(40) DEFAULT NULL,
@@ -168,3 +167,4 @@ CREATE TABLE `regions` (
 LOCK TABLES `regions` WRITE;
 INSERT INTO `regions` VALUES (1,'Europe\r'),(2,'Americas\r'),(3,'Asia\r'),(4,'Middle East and Africa\r');
 UNLOCK TABLES;
+
