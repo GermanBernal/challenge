@@ -134,6 +134,7 @@ Una empresa de arriendo de vehículos necesita una aplicación para administrar 
 8. [Swagger](https://swagger.io/specification/) - Herramientas que implementan la especificacion de openAPI
 9. [Docker](https://www.docker.com/) - Contenedores
 
+
 ## Prerequisitos
 
 
@@ -157,9 +158,14 @@ docker-compose version 1.29.2, build 5becea4c
 Clonar el repositorio en la carpeta que se desee. 
 
 ### Levantamos el contenedor:
-Nos posicionamos en la carpeta que contiene el archivo docker-compose.yaml y ejecutamos 
+Nos posicionamos en la carpeta que contiene el archivo docker-compose.yaml y ejecutamos (este paso puede demorar)
 ```
 docker-compose up -d
+```
+Al finalizar, veremos un mensaje en consola como el siguiente:
+```
+Creating myhotel-challenge-database ... done
+Creating myhotel-challenge-app      ... done
 ```
 Verificamos que se levantaron correctamente los contenedores, para ello ejecutamos el siguiente comando:
 ```
@@ -173,6 +179,8 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS    
 ```
 Si todos los pasos fueron correctos, la aplicacion se encontrará ejecutando en el contenedor, exponiendo el puerto 8080. 
 Podemos ingresar a swagger accediendo al siguiente link [MyHotel-challenge API](http://localhost:8080/documentation.html)
+
+> *Aclaracion:* La primera vez que se ejecute, debe cargar y ejecutar el archivo initdb.sql por lo tanto dicha demora retrasa el levantamiento del proyecto de spring, y por lo tanto, al intentar acceder al link anterior puede fallar. Se debe esperar unos segundos a que reintente levantar el proyecto de spring.
 
 ## Swagger
 Veremos tres segmentos, correspondientes a cada uno de los controllers desarrollados:
