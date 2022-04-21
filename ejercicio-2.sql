@@ -7,7 +7,7 @@
 -- SEGMENTO A: menor a USD 3500
 -- SEGMENTO B: mayor o igual a USD 3500 y menor que UDS 8000
 -- SEGMENTO C: mayor o igual a USD 8000
--- 
+--
 USE `myhotel-test`;
 SELECT
 	(
