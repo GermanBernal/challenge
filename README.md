@@ -138,12 +138,19 @@ Una empresa de arriendo de vehículos necesita una aplicación para administrar 
 
 
 ### Docker
-Verificar que esta instalado Docker:
+Verificar que esta instalado docker:
 ```
 docker --version
 ```
 ```
 Docker version 20.10.14, build a224086
+```
+Verificar que esta instalado docker-compose:
+```
+docker-compose --version
+```
+```
+docker-compose version 1.29.2, build 5becea4c
 ```
 
 ## Ejecucion:
@@ -152,7 +159,7 @@ Clonar el repositorio en la carpeta que se desee.
 ### Levantamos el contenedor:
 Nos posicionamos en la carpeta que contiene el archivo docker-compose.yaml y ejecutamos 
 ```
-docker-compose -up
+docker-compose up -d
 ```
 Verificamos que se levantaron correctamente los contenedores, para ello ejecutamos el siguiente comando:
 ```
@@ -164,13 +171,15 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS    
 5288e7cc13d3   web:latest   "./mvnw spring-boot:…"   21 minutes ago   Up About a minute   0.0.0.0:8080->8080/tcp              myhotel-challenge-app
 212b9f62b88e   mysql:8.0    "docker-entrypoint.s…"   25 minutes ago   Up About a minute   0.0.0.0:3306->3306/tcp, 33060/tcp   myhotel-challenge-database
 ```
-Si todos los pasos fueron correctos, la aplicacion se encontrar ejecutando en el contenedor, exponiendo el puerto 8080, podemos ingresar a swagger accediendo al siguiente link [MyHotel-challenge API](http://localhost:8080/documentation.html)
+Si todos los pasos fueron correctos, la aplicacion se encontrará ejecutando en el contenedor, exponiendo el puerto 8080. 
+Podemos ingresar a swagger accediendo al siguiente link [MyHotel-challenge API](http://localhost:8080/documentation.html)
 
 ## Swagger
 Veremos tres segmentos, correspondientes a cada uno de los controllers desarrollados:
 * Camion controller
 * Auto controller
 * Mantenimiento controller
+* Consultas controller
 
 Ademas, veremos en la pestaña Schemas, los DTOs, cada uno documentado con sus tipos, propiedades y ejemplos:
 * CamionDto
