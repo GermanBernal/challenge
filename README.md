@@ -73,7 +73,7 @@ docker-compose --version
 docker-compose version 1.29.2, build 5becea4c
 ```
 
-## Ejecucion:
+## Ejecución:
 Clonar el repositorio en la carpeta que se desee. 
 
 ### Levantamos el contenedor:
@@ -115,7 +115,7 @@ Ademas, veremos en la pestaña Schemas, los DTOs, cada uno documentado con sus t
 
 Se puede probar la API desde la misma UI de swagger, pero tambien es posible obtener la colección de postman, haciendo click en el link "/documentation" que se encuentra debajo del titulo "Myhotel API"
 
-## Aclaracion sobre Tests
+## Aclaración sobre Tests
 Se crea solamente un test de la capa rest de la clase VehiculoCamionController, la misma es a modo de demostración.
 No obstante, el Dockerfile ejecuta el comando que contiene -DskipTest.
 ```
@@ -125,6 +125,10 @@ Si se desea correr los tests, se puede mediante consola ejecutando el siguiente 
 ```
 ./mvnw test
 ```
+
+## Aclaración sobre ejercicio 2:
+Se realizan las queries en SQL y se dejan en archivo "ejercicio-2.sql". 
+Ademas de poder ser ejecutadas, las mismas fueron utilizadas a modo de "native query" en el proyecto para resolver el punto 3.
 
 
 ## Autor
